@@ -14,7 +14,7 @@ const App =() => {
   return (
     <Fragment>
       <Search />
-      <div className="container">
+      <div className='container'>
         <Tasks />
       </div>
     </Fragment>
