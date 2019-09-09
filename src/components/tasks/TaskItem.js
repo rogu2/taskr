@@ -6,7 +6,7 @@ const TaskItem = ({ task }) => {
     return (
        <li className='collection-item'>
            <div>
-                <a href='#edit-log-modal' className={`modal-trigger ${task.urgent ? 'red-text' : 'blue-text'}`}>
+                <a href='#edit-task-modal' className={`modal-trigger ${task.urgent ? 'red-text' : 'blue-text'}`}>
                     {task.message}
                 </a>
                 <br />

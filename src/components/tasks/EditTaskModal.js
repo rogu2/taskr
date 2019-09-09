@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const AddTaskModal = () => {
+const EditTaskModal = () => {
     const [message, setMessage] = useState('')
     const [urgent, setUrgent] = useState(false)
     const [agent, setAgent] = useState('')
@@ -11,17 +11,18 @@ const AddTaskModal = () => {
             M.toast({ html: 'To add a new task please enter a message and assign an agent' })
         } else {
             console.log(message, agent, urgent)
-             // Clear Fields
-             setMessage('')
-             setUrgent(false)
-             setAgent('')
+
+            // Clear Fields
+            setMessage('')
+            setUrgent(false)
+            setAgent('')
         }
     }
 
     return (
-        <div id='add-task-modal' className='modal' style={modalStyle}>
+        <div id='edit-task-modal' className='modal' style={modalStyle}>
             <div className="modal-content">
-                <h4>Add Task</h4>
+                <h4>Edit Task</h4>
                 <div className='row'>
                     <div className='input-field'>
                         <input
@@ -30,7 +31,7 @@ const AddTaskModal = () => {
                             value={message}
                             onChange={e => setMessage(e.target.value)} 
                         />
-                        <label htmlFor='message' className='active'>Add Message</label>
+                        <label htmlFor='message' className='active'>Edit Message</label>
                     </div>
                 </div>
                 <div className='row'>
@@ -76,4 +77,4 @@ const modalStyle = {
     height: '75%'
 }
 
-export default AddTaskModal
+export default EditTaskModal
