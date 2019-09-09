@@ -1,0 +1,42 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "message": "walk dog",
+      "urgent": false,
+      "date": "01-01-2019",
+      "agent": "John Doe"
+    },
+    {
+      "id": 2,
+      "message": "prep dinner",
+      "urgent": true,
+      "date": "04-22-2019",
+      "agent": "Ned Stark"
+    },
+    {
+      "id": 3,
+      "message": "car maintenance",
+      "urgent": false,
+      "date": "11-11-2019",
+      "agent": "Theon Greyjoy"
+    }
+  ],
+  "agents": [
+    {
+      "id": 1,
+      "first": "John",
+      "last": "Doe"
+    },
+    {
+      "id": 2,
+      "first": "Ned",
+      "last": "Stark"
+    },
+    {
+      "id": 3,
+      "first": "Theon",
+      "last": "Greyjoy"
+    }
+  ]
+}
