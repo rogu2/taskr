@@ -2,9 +2,11 @@ import {
     GET_TASKS,
     SET_LOADING,
     TASKS_ERROR,
-    ADD_TASK
+    ADD_TASK,
+    DELETE_TASK
 } from './types'
 
+// Get Task Action
 export const getTasks = () => async dispatch => {
     try {
         setLoading()
@@ -25,7 +27,7 @@ export const getTasks = () => async dispatch => {
    
 }
 
-// Add Task
+// Add Task Action
 export const addTask = (task) => async dispatch => {
     try {
         setLoading()
@@ -49,6 +51,28 @@ export const addTask = (task) => async dispatch => {
             payload: err.response.data
         })
     }
+}
+
+// Delete Task
+export const deleteTask = id => async dispatch => {
+    try {
+        setLoading()
+
+        await fetch(`/tasks/${id}`, {
+            method: 'DELETE'
+        })
+    
+        dispatch({
+            type: DELETE_TASK,
+            payload: id
+        })
+    } catch (err) {
+        dispatch({
+            type: TASKS_ERROR,
+            payload: err.response.data
+        })
+    }
+   
 }
 
 // Sets loading to true
