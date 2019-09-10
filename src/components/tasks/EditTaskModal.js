@@ -1,16 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { updateTask } from '../../actions/taskActions'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const EditTaskModal = () => {
+const EditTaskModal = ({ current, updateTask }) => {
     const [message, setMessage] = useState('')
     const [urgent, setUrgent] = useState(false)
     const [agent, setAgent] = useState('')
+
+    useEffect(() => {
+        if (current) {
+            setMessage(current.message)
+            setUrgent(current.urgent)
+            setAgent(current.agent)
+        }
+    }, [current])
 
     const onSubmit = () => {
         if (message === '' || agent === '') {
             M.toast({ html: 'To add a new task please enter a message and assign an agent' })
         } else {
-            console.log(message, agent, urgent)
+            const changeTask = {
+                id: current.id,
+                message,
+                urgent,
+                agent,
+                date: new Date()
+            }
+
+            updateTask(changeTask)
+            M.toast({ html: 'Task successfully updated' })
 
             // Clear Fields
             setMessage('')
@@ -31,7 +51,6 @@ const EditTaskModal = () => {
                             value={message}
                             onChange={e => setMessage(e.target.value)} 
                         />
-                        <label htmlFor='message' className='active'>Edit Message</label>
                     </div>
                 </div>
                 <div className='row'>
@@ -77,4 +96,13 @@ const modalStyle = {
     height: '75%'
 }
 
-export default EditTaskModal
+EditTaskModal.propTypes = {
+    current: PropTypes.object,
+    updateTask: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+    current: state.task.current
+})
+
+export default connect(mapStateToProps, { updateTask }) (EditTaskModal)

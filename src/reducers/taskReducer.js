@@ -1,4 +1,13 @@
-import { GET_TASKS, SET_LOADING, TASKS_ERROR, ADD_TASK, DELETE_TASK } from '../actions/types'
+import { 
+    GET_TASKS, 
+    SET_LOADING, 
+    TASKS_ERROR, 
+    ADD_TASK, 
+    DELETE_TASK, 
+    UPDATE_TASK,
+    SET_CURRENT,
+    CLEAR_CURRENT
+} from '../actions/types'
 
 const initialState = {
     tasks: null,
@@ -27,10 +36,25 @@ export default (state = initialState, action) => {
                 tasks: state.tasks.filter(task => task.id !== action.payload),
                 loading: false
             }
+        case UPDATE_TASK:
+            return {
+                ...state,
+                tasks: state.tasks.map(task => task.id === action.payload.id ? action.payload : task),
+                loading: false
+            }
         case SET_LOADING:
             return {
                 ...state,
                 loading: true
+            }
+        case SET_CURRENT:
+            return {
+                ...state,
+                current: action.payload
+            }
+        case CLEAR_CURRENT:
+            return {
+                current: null
             }
         case TASKS_ERROR: 
         console.error(action.payload)
