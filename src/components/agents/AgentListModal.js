@@ -1,36 +1,37 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import AgentItem from './AgentItem'
+import { getAgents } from '../../actions/agentAction'
 
-const AgentListModal = () => {
-    const [ agents, setAgents ] = useState([])
-    const [loading, setLoading] = useState(false)
-
+const AgentListModal = ({ getAgents, agent: { agents, loading } }) => {
     useEffect(() => {
         getAgents()
         // eslint-disable-next-line
     }, [])
 
-    const getAgents = async () => {
-        setLoading(true)
-        const res = await fetch('/agents')
-        const data = await res.json()
-
-        setAgents(data)
-        setLoading(false)
-    }
-    
     return (
        <div id="agent-list-modal" className='modal'>
             <div className="modal-content">
-                <h4>Agent List</h4>
+                <h4>Available Agents</h4>
                 <ul className='collection'>
-                    {!loading && agents.map(agent => (
-                        <AgentItem agent={agent} key={agent.id} />
-                    ))}
+                    {!loading && 
+                        agents !== null && 
+                        agents.map(agent => <AgentItem agent={agent} key={agent.id} />
+                    )}
                 </ul>
             </div>
        </div>
     )
 }
 
-export default AgentListModal
+AgentListModal.propTypes = {
+    agent: PropTypes.object.isRequired,
+    getAgents: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+    agent: state.agent
+})
+
+export default connect(mapStateToProps, { getAgents })(AgentListModal)
