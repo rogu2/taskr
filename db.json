@@ -1,12 +1,18 @@
 {
   "tasks": [
     {
+      "id": 1,
       "message": "Get to work!",
       "urgent": true,
       "agent": "Ned Stark",
-      "date": "2019-09-10T20:30:14.437Z",
-      "id": 1
+      "date": "2019-09-10T20:50:20.178Z"
     }
   ],
-  "agents": []
+  "agents": [
+    {
+      "id": "1",
+      "first": "Ned",
+      "last": "Stark"
+    }
+  ]
 }
