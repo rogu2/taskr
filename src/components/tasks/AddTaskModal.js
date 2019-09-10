@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { addTask } from '../../actions/taskActions'
+import PropTypes from 'prop-types'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const AddTaskModal = () => {
+const AddTaskModal = ({ addTask }) => {
     const [message, setMessage] = useState('')
     const [urgent, setUrgent] = useState(false)
     const [agent, setAgent] = useState('')
@@ -10,7 +13,17 @@ const AddTaskModal = () => {
         if (message === '' || agent === '') {
             M.toast({ html: 'To add a new task please enter a message and assign an agent' })
         } else {
-            console.log(message, agent, urgent)
+            const newTask = {
+                message,
+                urgent,
+                agent,
+                date: new Date()
+            }
+
+            addTask(newTask)
+
+            M.toast({ html: `Task added by ${agent}` })
+
              // Clear Fields
              setMessage('')
              setUrgent(false)
@@ -76,4 +89,8 @@ const modalStyle = {
     height: '75%'
 }
 
-export default AddTaskModal
+AddTaskModal.propTypes = {
+    addTask: PropTypes.func.isRequired
+}
+
+export default connect(null, { addTask })(AddTaskModal)
