@@ -5,6 +5,7 @@ import {
     ADD_TASK, 
     DELETE_TASK, 
     UPDATE_TASK,
+    SEARCH_TASKS,
     SET_CURRENT,
     CLEAR_CURRENT
 } from '../actions/types'
@@ -41,6 +42,11 @@ export default (state = initialState, action) => {
                 ...state,
                 tasks: state.tasks.map(task => task.id === action.payload.id ? action.payload : task),
                 loading: false
+            }
+        case SEARCH_TASKS:
+            return {
+                ...state,
+                tasks: action.payload
             }
         case SET_LOADING:
             return {

@@ -5,11 +5,12 @@ import {
     ADD_TASK,
     DELETE_TASK,
     UPDATE_TASK,
+    SEARCH_TASKS,
     SET_CURRENT,
     CLEAR_CURRENT
 } from './types'
 
-// Get Task Action
+// Get Tasks Action
 export const getTasks = () => async dispatch => {
     try {
         setLoading()
@@ -100,6 +101,27 @@ export const updateTask = task => async dispatch => {
             payload: err.response.data
         })
     }
+}
+
+// Search Tasks
+export const searchTasks = (text) => async dispatch => {
+    try {
+        setLoading()
+
+        const res = await fetch(`/tasks?q=${text}`)
+        const data = await res.json()
+    
+        dispatch({
+            type: SEARCH_TASKS,
+            payload: data
+        })
+    } catch (err) {
+        dispatch({
+            type: TASKS_ERROR,
+            payload: err.response.data
+        })
+    }
+   
 }
 
 // Set Current
