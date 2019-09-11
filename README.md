@@ -1,4 +1,4 @@
-# Peeps
+# TASKR
 
 ## Introduction
 Welcome to Taskr - a React SPA for keeping track of who needs to do what. This app uses a simple JSON server to act as an API. Future development will include an Express/Node server and full authentication.  For the time being please enjoy this simple app!
