@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import M from 'materialize-css/dist/js/materialize.min.js'
+import { addAgent } from '../../actions/agentAction'
 
-const AddAgentModal = () => {
+const AddAgentModal = ({ addAgent }) => {
     const [first, setFirst] = useState('')
     const [last, setLast] = useState('')
 
@@ -9,7 +12,10 @@ const AddAgentModal = () => {
         if (first === '' || last === '') {
             M.toast({ html: 'Please enter a first and last name' })
         } else {
-            console.log(first, last)
+            addAgent({ first, last })
+
+            M.toast({ html: `${first} ${last} has been successfully added` })
+
              // Clear Fields
              setFirst('')
              setLast('')
@@ -50,4 +56,8 @@ const AddAgentModal = () => {
     )
 }
 
-export default AddAgentModal
+AddAgentModal.propTypes ={
+    addAgent: PropTypes.func.isRequired
+}
+
+export default connect(null, { addAgent })(AddAgentModal)

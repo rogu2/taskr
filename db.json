@@ -1,42 +1,30 @@
 {
   "tasks": [
     {
-      "id": 2,
-      "message": "Attack Winterfell: FAILURE",
-      "urgent": true,
-      "agent": "Theon Greyjoy",
-      "date": "2019-09-10T17:44:18.352Z"
-    },
-    {
-      "message": "Rotate Tires",
-      "urgent": false,
-      "agent": "John Doe",
-      "date": "2019-09-10T15:32:00.650Z",
-      "id": 3
-    },
-    {
-      "message": "Visit Kings Landing",
+      "message": "Visit Kings Landing...?",
       "urgent": false,
       "agent": "Ned Stark",
-      "date": "2019-09-10T15:32:11.922Z",
-      "id": 4
+      "date": "2019-09-11T16:06:18.263Z",
+      "id": 1
+    },
+    {
+      "message": "ATTACK WINTERFELL!",
+      "urgent": true,
+      "agent": "Theon Greyjoy",
+      "date": "2019-09-11T16:06:27.705Z",
+      "id": 2
     }
   ],
   "agents": [
     {
-      "id": 1,
-      "first": "John",
-      "last": "Doe"
-    },
-    {
-      "id": 2,
+      "id": "1",
       "first": "Ned",
       "last": "Stark"
     },
     {
-      "id": 3,
       "first": "Theon",
-      "last": "Greyjoy"
+      "last": "Greyjoy",
+      "id": "iJeGnZy"
     }
   ]
 }

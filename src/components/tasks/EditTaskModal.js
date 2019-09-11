@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { updateTask } from '../../actions/taskActions'
 import M from 'materialize-css/dist/js/materialize.min.js'
+import AgentSelectOptions from '../agents/AgentSelectOptions'
 
 const EditTaskModal = ({ current, updateTask }) => {
     const [message, setMessage] = useState('')
@@ -62,9 +63,7 @@ const EditTaskModal = ({ current, updateTask }) => {
                             onChange={e => setAgent(e.target.value)}
                         >
                             <option value='' disabled>Select Agent</option>
-                            <option value='John Doe' >John Doe</option>
-                            <option value='Ned Stark' >Ned Stark</option>
-                            <option value='Theon Greyjoy' >Theon Greyjoy</option>
+                            <AgentSelectOptions />
                         </select>
                     </div>
                 </div>
