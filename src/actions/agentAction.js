@@ -50,8 +50,7 @@ export const addAgent = agent => async dispatch => {
             type: ADD_AGENT,
             payload: data
         })
-
-
+        
     } catch (err) {
         dispatch({
             type: AGENTS_ERROR,

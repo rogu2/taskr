@@ -9,7 +9,8 @@ const AgentSelectOptions = ({ getAgents, agent: { agents, loading } }) => {
         // eslint-disable-next-line
     }, [])
     return (
-        !loading && agents !== null && agents.map(a => <option key={a.id} value={`${a.first} {a.last}`}>
+        !loading && agents !== null && agents.map(a => 
+            <option key={a.id} value={`${a.first} ${a.last}`}>
             {a.first} {a.last}
         </option>)
     )
