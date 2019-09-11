@@ -13,6 +13,9 @@ const AddAgentModal = ({ addAgent }) => {
             M.toast({ html: 'Please enter a first and last name' })
         } else {
             addAgent({ first, last })
+
+            M.toast({ html: `${first} ${last} has been successfully added` })
+
              // Clear Fields
              setFirst('')
              setLast('')
